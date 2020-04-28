@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'adv_project.wsgi.application'
 #    }
 # }
 
-Use this config for your deployed PostgresQL DB, comment out when developing or testing locally with sqlite
+# Use this config for your deployed PostgresQL DB, comment out when developing or testing locally with sqlite
 DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600)
 }
