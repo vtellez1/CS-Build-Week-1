@@ -93,17 +93,17 @@ WSGI_APPLICATION = 'adv_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # Use this config for your local sqlite DB for development and testing, comment out when using PostgresQL on heroku
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-# Use this config for your deployed PostgresQL DB, comment out when developing or testing locally with sqlite
 # DATABASES = {
-#    'default': dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600)
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
 # }
+
+Use this config for your deployed PostgresQL DB, comment out when developing or testing locally with sqlite
+DATABASES = {
+    'default': dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600)
+}
 
 
 # Password validation
@@ -155,19 +155,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
-
 """
+STATIC_URL = '/static/'
+"""
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/staticfiles/'
 
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Make sure you have at least one file inside the img directory inside the staticfiles directory
 # It doesn't matter if you don't use the file, but the dir can't be empty
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'staticfiles/img')
-]
-"""
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles/img')
+                    ]
+
 
 django_heroku.settings(locals())
